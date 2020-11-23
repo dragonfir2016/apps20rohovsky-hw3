@@ -36,4 +36,14 @@ class Student {
         return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
     }
 
+    @Override
+    public boolean equals(Object o2) {
+        if (!(o2 instanceof Student)) {
+            return false;
+        }
+        Student other = (Student) o2;
+        return GPA == other.GPA && year == other.year
+                && name.equals(other.name) && surname.equals(other.surname);
+    }
+
 }
