@@ -33,23 +33,24 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
+        return "Student{name=" + name + ", surname=" + surname + ", " + "GPA="
+                + GPA + ", year=" + year + '}';
     }
 
     @Override
-    public boolean equals(Object o2) {
-        if (!(o2 instanceof Student)) {
+    public boolean equals(Object oTwo) {
+        if (!(oTwo instanceof Student)) {
             return false;
         }
-        Student other = (Student) o2;
+        Student other = (Student) oTwo;
         return GPA == other.GPA && year == other.year
                 && name.equals(other.name) && surname.equals(other.surname);
     }
 
     @Override
-    public int hashCode(){
-        return (int) (this.getYear()*228 + this.getGPA()*1984 +
-                getName().length());
+    public int hashCode() {
+        return (int) (this.getYear()*228 + this.getGPA()*1984
+                + getName().length());
     }
 
 }

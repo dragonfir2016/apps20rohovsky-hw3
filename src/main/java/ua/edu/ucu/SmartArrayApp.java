@@ -27,8 +27,8 @@ public class SmartArrayApp {
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Integer) o1) - ((Integer) o2);
+            public int compare(Object oM, Object oT) {
+                return ((Integer) oM) - ((Integer) oT);
             }
         };
 
@@ -58,13 +58,12 @@ public class SmartArrayApp {
 
     public static String[]
     findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
-        int MINIMUM_GPA = 4;
 
         MyPredicate secondYearHighGPA = new MyPredicate() {
             @Override
             public boolean test(Object t) {
                 return ((Student) t).getYear() == 2
-                        && ((Student) t).getGPA() >= MINIMUM_GPA;
+                        && ((Student) t).getGPA() >= 4;
             }
         };
 

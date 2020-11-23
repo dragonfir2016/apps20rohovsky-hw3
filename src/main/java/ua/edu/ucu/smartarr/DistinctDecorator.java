@@ -15,8 +15,8 @@ public class DistinctDecorator extends SmartArrayDecorator {
         ArrayList<Object> ansArr = new ArrayList<>();
         for (int i = 0; i < testArr.length; i++) {
             for (int j = i + 1; j < testArr.length; j++) {
-                if (testArr[i] != null && testArr[j] != null &&
-                        testArr[i].equals(testArr[j])) {
+                if (testArr[i] != null && testArr[j] != null
+                        && testArr[i].equals(testArr[j])) {
                     testArr[j] = null;
                 }
             }
