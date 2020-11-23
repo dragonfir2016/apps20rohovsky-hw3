@@ -46,4 +46,10 @@ class Student {
                 && name.equals(other.name) && surname.equals(other.surname);
     }
 
+    @Override
+    public int hashCode(){
+        return (int) (this.getYear()*228 + this.getGPA()*1984 +
+                getName().length());
+    }
+
 }

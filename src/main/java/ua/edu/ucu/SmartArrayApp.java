@@ -5,7 +5,13 @@ import java.util.Arrays;
 import ua.edu.ucu.functions.MyComparator;
 import ua.edu.ucu.functions.MyFunction;
 import ua.edu.ucu.functions.MyPredicate;
-import ua.edu.ucu.smartarr.*;
+import ua.edu.ucu.smartarr.BaseArray;
+import ua.edu.ucu.smartarr.FilterDecorator;
+import ua.edu.ucu.smartarr.SmartArray;
+import ua.edu.ucu.smartarr.SortDecorator;
+import ua.edu.ucu.smartarr.MapDecorator;
+import ua.edu.ucu.smartarr.DistinctDecorator;
+
 
 public class SmartArrayApp {
 
@@ -52,27 +58,29 @@ public class SmartArrayApp {
 
     public static String[]
     findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
+        int MINIMUM_GPA = 4;
 
         MyPredicate secondYearHighGPA = new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                return ((Student) t).getYear() == 2 &&
-                        ((Student) t).getGPA() >= 4;
+                return ((Student) t).getYear() == 2
+                        && ((Student) t).getGPA() >= MINIMUM_GPA;
             }
         };
 
         MyComparator sortBySurname = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Student) o1).getSurname().compareTo(((Student) o2).getSurname());
+            public int compare(Object oOne, Object oTwo) {
+                return ((Student) oOne).getSurname().compareTo(((Student) oTwo)
+                        .getSurname());
             }
         };
 
         MyFunction returnNameSurname = new MyFunction() {
             @Override
             public Object apply(Object t) {
-                return ((Student) t).getSurname() + " " +
-                        ((Student) t).getName();
+                return ((Student) t).getSurname() + " "
+                        + ((Student) t).getName();
             }
         };
         SmartArray studentsList = new BaseArray(students);
